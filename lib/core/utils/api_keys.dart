@@ -1,6 +1,6 @@
 class ApiKeys {
   static const String secretKey =
-      'sk_test_51PhTA2RokQ5PolAWJyOoi5p7bEwu3zp3pHhtBYNZJ9RL7mpbLK93EogZ1Oo4OMWWjcBWz8E8WuqGy1je8vfeK8Si00INzLpEZo';
+      "sk_test_51PhihXGwY3i5pZwNstIxZO7ChnXCGzzfy6fnyzyNZCI39LzJz1KyZG0eTktTmERc0WZWxQg6ACYGjAHgD7w5hb1200HodwfAcm";
   static const String publishableKey =
-      'pk_test_51PhTA2RokQ5PolAWmHJaDK5TjZW1dYIp9QQYB98kEhuf7wOmHDZNDqOoyqaxQ2kJWeuN2Y0STVWkA4ZyUs6X7rrX00ctVozuhV';
+      "pk_test_51PhihXGwY3i5pZwNFjfu40bztEhU0OPHh1Pv0IFqG1IAtSQR9VMCZov1gSax9PGY3CUjJ3GQtm6oocLxilxMAh4e00PXSZbJX6";
 }
