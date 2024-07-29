@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:payment_application/Features/checkout/presentation/views/widgets/payment_details_view_body.dart';
 import 'package:payment_application/core/widgets/cutom_app_bar.dart';
+import 'package:payment_application/features/checkout/presentation/views/widgets/payment_details_view_body.dart';
 
 class PaymentDetailsView extends StatelessWidget {
   const PaymentDetailsView({super.key});

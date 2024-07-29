@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:payment_application/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -6,9 +6,11 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.onTap,
     required this.text,
+    this.isLoading = false,
   });
 
   final void Function()? onTap;
+  final bool isLoading;
 
   final String text;
   @override
@@ -25,11 +27,15 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Styles.style22,
-          ),
+          child: isLoading
+              ? const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                )
+              : Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: Styles.style22,
+                ),
         ),
       ),
     );
