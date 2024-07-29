@@ -18,6 +18,5 @@ class CheckoutApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MyCartView(),
     );
-    
   }
 }

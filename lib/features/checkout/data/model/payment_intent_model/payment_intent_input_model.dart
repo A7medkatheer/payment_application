@@ -1,8 +1,10 @@
 class PaymentIntentInputModel {
   final String currency;
   final int amount;
+  final String customerId;
 
   PaymentIntentInputModel({
+    required this.customerId,
     required this.currency,
     required this.amount,
   });
@@ -10,7 +12,8 @@ class PaymentIntentInputModel {
   toJson() {
     return {
       'currency': currency,
-      'amount': amount,
+      'amount': "${amount}00",
+      'customer': customerId,
     };
   }
 }

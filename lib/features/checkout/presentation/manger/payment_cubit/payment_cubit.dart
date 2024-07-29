@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_application/core/utils/colored_print.dart';
@@ -31,7 +29,7 @@ class PaymentCubit extends Cubit<PaymentState> {
   @override
   void onChange(Change<PaymentState> change) {
     coloredPrint(message: change.toString());
-    log(change.toString());
+    // log(change.toString());
     super.onChange(change);
   }
 }

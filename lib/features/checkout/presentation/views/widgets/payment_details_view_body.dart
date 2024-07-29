@@ -6,7 +6,6 @@ import 'package:payment_application/features/checkout/presentation/views/thank_y
 import 'package:payment_application/features/checkout/presentation/views/widgets/custom_credit_card.dart';
 import 'package:payment_application/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 
-
 class PaymentDetailsViewBody extends StatefulWidget {
   const PaymentDetailsViewBody({super.key});
 

@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:payment_application/core/errors/failures.dart';
 import 'package:payment_application/core/utils/stripe_service.dart';
@@ -15,7 +14,7 @@ class CheckoutRepoImpl extends CheckoutRepo {
           paymentIntentInputModel: paymentIntentInputModel);
       return const Right(null);
     } catch (e) {
-     return left(ServerFailure(errMessage: e.toString()));
+      return left(ServerFailure(errMessage: e.toString()));
     }
   }
 }
