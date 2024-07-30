@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_application/core/utils/api_keys.dart';
 import 'package:payment_application/core/utils/colored_print.dart';
+import 'package:payment_application/core/utils/paymob_service.dart';
 import 'package:payment_application/core/widgets/custom_button.dart';
 import 'package:payment_application/features/checkout/data/model/amount_model/amount_model.dart';
 import 'package:payment_application/features/checkout/data/model/amount_model/details.dart';
@@ -13,12 +14,13 @@ import 'package:payment_application/features/checkout/data/model/item_list_model
 import 'package:payment_application/features/checkout/data/model/payment_intent_model/payment_intent_input_model.dart';
 import 'package:payment_application/features/checkout/presentation/manger/payment_cubit/payment_cubit.dart';
 import 'package:payment_application/features/checkout/presentation/views/thank_you_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
-    super.key,
+    super.key, required this.activeIndex,
   });
-
+  final int activeIndex;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentState>(
@@ -47,21 +49,29 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           text: 'Continue',
           isLoading: state is PaymentLoading ? true : false,
           onTap: () {
-            // PaymentIntentInputModel paymentIntentInputModel =
-            //     PaymentIntentInputModel(
-            //   amount: 1000,
-            //   currency: 'USD',
-            //   customerId: 'cus_QYxjQWI7Hmr9J4',
-            // );
-            // context.read<PaymentCubit>().makePayment(
-            //       paymentIntentInputModel: paymentIntentInputModel,
-            //     );
-            var transactionData = getTransaction();
-            exceutePaypalPayment(context, transactionData);
+            // stripePayment(context);
+            // paypalPayment(context);
+            // pay();
           },
         );
       },
     );
+  }
+
+  void stripePayment(BuildContext context) {
+    PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(
+      amount: 1000,
+      currency: 'USD',
+      customerId: 'cus_QYxjQWI7Hmr9J4',
+    );
+    context.read<PaymentCubit>().makePayment(
+          paymentIntentInputModel: paymentIntentInputModel,
+        );
+  }
+
+  void paypalPayment(BuildContext context) {
+    var transactionData = getTransaction();
+    exceutePaypalPayment(context, transactionData);
   }
 
   Future<dynamic> exceutePaypalPayment(BuildContext context,
@@ -112,5 +122,14 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     ];
     var itemList = ItemListModel(orders: orders);
     return (amount: amountModel, itemList: itemList);
+  }
+
+  Future<void> pay() async {
+    PaymobManager().getPaymentKey(10, "EGP").then((String paymentKey) {
+      launchUrl(
+        Uri.parse(
+            "https://accept.paymob.com/api/acceptance/iframes/858809?payment_token=$paymentKey"),
+      );
+    });
   }
 }

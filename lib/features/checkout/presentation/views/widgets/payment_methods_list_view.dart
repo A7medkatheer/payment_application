@@ -8,13 +8,15 @@ class PaymentMethodsListView extends StatefulWidget {
   State<PaymentMethodsListView> createState() => _PaymentMethodsListViewState();
 }
 
+int activeIndex = 0;
+
 class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
   final List<String> paymentMethodsItems = const [
     'assets/images/card.svg',
-    'assets/images/paypal.svg'
+    'assets/images/paypal.svg',
+    'assets/images/master_card.svg'
   ];
 
-  int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

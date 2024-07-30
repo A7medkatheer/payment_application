@@ -27,7 +27,7 @@ class CardInfoWidget extends StatelessWidget {
             TextSpan(
               children: [
                 const TextSpan(
-                  text: 'Credit Card ',
+                  text: 'Credit Card',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,

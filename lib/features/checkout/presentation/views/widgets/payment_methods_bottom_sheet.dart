@@ -19,7 +19,9 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
           SizedBox(
             height: 32,
           ),
-          CustomButtonBlocConsumer(),
+          CustomButtonBlocConsumer(
+            activeIndex: 0,
+          ),
         ],
       ),
     );
