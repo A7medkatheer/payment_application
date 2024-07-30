@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payment_application/core/utils/api_keys.dart';
 import 'package:payment_application/core/utils/colored_print.dart';
-import 'package:payment_application/core/utils/paymob_service.dart';
 import 'package:payment_application/core/widgets/custom_button.dart';
 import 'package:payment_application/features/checkout/data/model/amount_model/amount_model.dart';
 import 'package:payment_application/features/checkout/data/model/amount_model/details.dart';
@@ -14,7 +13,6 @@ import 'package:payment_application/features/checkout/data/model/item_list_model
 import 'package:payment_application/features/checkout/data/model/payment_intent_model/payment_intent_input_model.dart';
 import 'package:payment_application/features/checkout/presentation/manger/payment_cubit/payment_cubit.dart';
 import 'package:payment_application/features/checkout/presentation/views/thank_you_view.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -48,22 +46,18 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           text: 'Continue',
-          // isLoading: state is PaymentLoading ? true : false,
+          isLoading: state is PaymentLoading || state is PaymobPaymentLoading
+              ? true
+              : false,
           onTap: () {
             coloredPrint(message: activeIndex.toString());
-            // if (activeIndex == 0) {
-            //   stripePayment(context);
-            // }
-            // else
-            // if (activeIndex == 1) {
-            //   paypalPayment(context);
-            // }
-            //  else {
-            // pay();
-            // }
-            // stripePayment(context);
-            // paypalPayment(context);
-            // pay();
+            if (activeIndex == 0) {
+              stripePayment(context);
+            } else if (activeIndex == 1) {
+              paypalPayment(context);
+            } else {
+              context.read<PaymentCubit>().paymobPayment();
+            }
           },
         );
       },
@@ -134,14 +128,5 @@ class CustomButtonBlocConsumer extends StatelessWidget {
     ];
     var itemList = ItemListModel(orders: orders);
     return (amount: amountModel, itemList: itemList);
-  }
-
-  Future<void> pay() async {
-    PaymobManager().getPaymentKey(10, "EGP").then((String paymentKey) {
-      launchUrl(
-        Uri.parse(
-            "https://accept.paymob.com/api/acceptance/iframes/858809?payment_token=$paymentKey"),
-      );
-    });
   }
 }

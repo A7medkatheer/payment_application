@@ -3,6 +3,4 @@ class PaymentPayMobRequestModel {
   final String currency;
 
   PaymentPayMobRequestModel({required this.amount, required this.currency});
-
-
 }

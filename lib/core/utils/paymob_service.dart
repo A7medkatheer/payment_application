@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_application/core/utils/api_keys.dart';
+
 class PaymobManager {
   Future<String> getPaymentKey(int amount, String currency) async {
     try {
@@ -99,5 +100,5 @@ class PaymobManager {
 //         Uri.parse("https://accept.paymob.com/api/acceptance/iframes/791787?payment_token=$paymentKey"),
 //       );
 //     });
-    
-//   } 
+
+//   }
