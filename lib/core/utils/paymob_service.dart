@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:payment_application/core/utils/api_keys.dart';
 class PaymobManager {
   Future<String> getPaymentKey(int amount, String currency) async {
@@ -19,8 +20,8 @@ class PaymobManager {
       );
       return paymentKey;
     } catch (e) {
-      print("Exc==========================================");
-      print(e.toString());
+      debugPrint("Exc==========================================");
+      debugPrint(e.toString());
       throw Exception();
     }
   }

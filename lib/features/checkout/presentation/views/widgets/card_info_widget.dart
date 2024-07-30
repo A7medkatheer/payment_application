@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CardInfoWidget extends StatelessWidget {
   const CardInfoWidget({
@@ -23,32 +23,22 @@ class CardInfoWidget extends StatelessWidget {
           const SizedBox(
             width: 23,
           ),
-          Text.rich(
-            TextSpan(
-              children: [
-                const TextSpan(
-                  text: 'Credit Card',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
+          const Expanded(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Credit Card',
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: 'Mastercard **78',
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.699999988079071),
-                    fontSize: 16,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                ),
-              ],
+                  // Add more TextSpan children if needed
+                ],
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
-          )
+          ),
         ],
       ),
     );

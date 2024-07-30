@@ -18,7 +18,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
-    super.key, required this.activeIndex,
+    super.key,
+    required this.activeIndex,
   });
   final int activeIndex;
   @override
@@ -47,8 +48,19 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           text: 'Continue',
-          isLoading: state is PaymentLoading ? true : false,
+          // isLoading: state is PaymentLoading ? true : false,
           onTap: () {
+            coloredPrint(message: activeIndex.toString());
+            // if (activeIndex == 0) {
+            //   stripePayment(context);
+            // }
+            // else
+            // if (activeIndex == 1) {
+            //   paypalPayment(context);
+            // }
+            //  else {
+            // pay();
+            // }
             // stripePayment(context);
             // paypalPayment(context);
             // pay();
@@ -99,7 +111,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           Navigator.pop(context);
         },
         onCancel: () {
-          print('cancelled:');
+          debugPrint('cancelled:');
           Navigator.pop(context);
         },
       ),

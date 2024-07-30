@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:payment_application/core/widgets/custom_button.dart';
 import 'package:payment_application/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:payment_application/features/checkout/presentation/views/widgets/custom_credit_card.dart';
-import 'package:payment_application/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 
 class PaymentDetailsViewBody extends StatefulWidget {
   const PaymentDetailsViewBody({super.key});
@@ -21,9 +20,9 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const SliverToBoxAdapter(
-          child: PaymentMethodsListView(),
-        ),
+        // const SliverToBoxAdapter(
+        //   child: PaymentMethodsListView(),
+        // ),
         SliverToBoxAdapter(
           child: CustomCreditCard(
             autovalidateMode: autovalidateMode,
