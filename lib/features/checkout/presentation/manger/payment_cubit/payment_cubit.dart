@@ -18,14 +18,16 @@ class PaymentCubit extends Cubit<PaymentState> {
     emit(PaymentLoading());
     final data = await checkoutRepo.makePayment(
         paymentIntentInputModel: paymentIntentInputModel);
-    data.fold(
-      (failure) => emit(
-        PaymentFailure(message: failure),
-      ),
-      (_) => emit(
-        PaymentSuccess(),
-      ),
-    );
+    if (!isClosed) {
+      data.fold(
+        (failure) => emit(
+          PaymentFailure(message: failure),
+        ),
+        (_) => emit(
+          PaymentSuccess(),
+        ),
+      );
+    }
   }
 
   Future<void> paymobPayment() async {
